@@ -20,9 +20,16 @@
       </ion-header>
 
       <div id="container">
-        <ion-button color="success" href="/add">ADD GAME</ion-button> <br />
-        <br />
-        <ion-button color="success" href="/list">LIST GAMES</ion-button>
+        <ion-card>
+          <ion-card-header>
+            <ion-card-title>Nome</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>Preço</ion-card-content>
+          <ion-button color="danger">DELETE</ion-button>
+          <ion-button color="primary">EDIT</ion-button>
+        </ion-card>
+        <ion-button color="success" href="/add">ADD GAME</ion-button>
       </div>
     </ion-content>
   </ion-page>
@@ -35,8 +42,8 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  IonButton,
 } from "@ionic/vue";
+
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -47,7 +54,6 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
-    IonButton,
   },
 });
 </script>
@@ -55,6 +61,7 @@ export default defineComponent({
 <style scoped>
 .bg-header {
   background-color: #424242;
+  color: white;
 }
 
 a {

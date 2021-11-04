@@ -20,9 +20,26 @@
       </ion-header>
 
       <div id="container">
-        <ion-button color="success" href="/add">ADD GAME</ion-button> <br />
+        <ion-item>
+          <ion-label position="floating">Name</ion-label>
+          <ion-input v-model="game.name" type="text"></ion-input>
+        </ion-item>
         <br />
-        <ion-button color="success" href="/list">LIST GAMES</ion-button>
+        <br />
+        <ion-item>
+          <ion-label position="floating">Price</ion-label>
+          <ion-input
+            v-model="game.price"
+            type="number"
+            min="0.01"
+            step="0.01"
+          ></ion-input>
+        </ion-item>
+        <br />
+        <br />
+        <ion-button @click="save()" href="/list" color="success"
+          >SAVE GAME</ion-button
+        >
       </div>
     </ion-content>
   </ion-page>
@@ -35,8 +52,13 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
+  IonItem,
+  IonLabel,
+  IonInput,
   IonButton,
 } from "@ionic/vue";
+
+import { UserGame } from "@/composables/game";
 import { defineComponent } from "vue";
 
 export default defineComponent({
@@ -47,7 +69,26 @@ export default defineComponent({
     IonPage,
     IonTitle,
     IonToolbar,
+    IonItem,
+    IonLabel,
+    IonInput,
     IonButton,
+  },
+  methods: {
+    save() {
+      /* console.log("botão clicado");
+      console.log(this.game.name);
+      console.log(this.game.price);
+      console.log(this.game); */
+      this.saveGame(this.game);
+    },
+  },
+  setup() {
+    const { game, saveGame } = UserGame();
+    return {
+      game,
+      saveGame,
+    };
   },
 });
 </script>
@@ -55,6 +96,7 @@ export default defineComponent({
 <style scoped>
 .bg-header {
   background-color: #424242;
+  color: white;
 }
 
 a {
